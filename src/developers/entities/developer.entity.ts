@@ -19,6 +19,6 @@ export class Developer {
 
   @BeforeInsert()
   generateId() {
-    this.id = `dev_${nanoid}`;
+    this.id = `dev_${nanoid()}`;
   }
 }

@@ -3,10 +3,14 @@ import { CreateDeveloperDto } from './dto/create-developer.dto';
 import { UpdateDeveloperDto } from './dto/update-developer.dto';
 import { Repository } from 'typeorm';
 import { Developer } from './entities/developer.entity';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class DevelopersService {
-  constructor(private readonly repository: Repository<Developer>) { }
+  constructor(
+    @InjectRepository(Developer)
+    private readonly repository: Repository<Developer>,
+  ) {}
 
   create(dto: CreateDeveloperDto) {
     const developer = this.repository.create(dto);
